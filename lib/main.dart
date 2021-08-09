@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
             Text(
               tcs ? "Diamond" : "",
               style: TextStyle(
-                color: Colors.blue,
+                color: Colors.white,
                 fontSize: 45.0,
                 fontWeight: FontWeight.bold,
               ),
