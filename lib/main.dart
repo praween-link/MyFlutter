@@ -43,15 +43,13 @@ class _MyAppState extends State<MyApp> {
       ),
       body: Center(
         child: Stack(
-          alignment: Alignment.topCenter,
+          alignment: Alignment.bottomCenter,
           children: <Widget>[
             Image(
-              image: NetworkImage(
-                'https://upload.wikimedia.org/wikipedia/commons/a/a7/TCS-Siruseri-Building.jpg',
-              ),
+              image: AssetImage('images/diamond2.png'),
             ),
             Text(
-              tcs ? "Welcome To TCS" : "",
+              tcs ? "Diamond" : "",
               style: TextStyle(
                 color: Colors.blue,
                 fontSize: 45.0,
@@ -64,9 +62,7 @@ class _MyAppState extends State<MyApp> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueGrey[700],
         child: Image(
-          image: NetworkImage(
-            'https://www.tcs.com/content/dam/tcs/images/logo/tata-logo-blue.png',
-          ),
+          image: AssetImage('images/diamond.png'),
         ),
         onPressed: () => welcome(),
       ),
