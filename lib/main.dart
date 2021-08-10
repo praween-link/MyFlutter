@@ -7,6 +7,7 @@
 //////////////////////////////////
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,53 +55,58 @@ class _MyAppState extends State<MyApp> {
                       fontFamily: 'Cairo',
                       letterSpacing: 5.0),
                 ),
-                Container(
-                  color: Colors.white,
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.phone,
-                        color: Colors.grey.shade800,
-                        size: 30.0,
-                      ),
-                      SizedBox(width: 10.0),
-                      Text(
-                        '+91 850 776 6280',
-                        style: TextStyle(
-                            color: Colors.grey.shade900,
-                            fontSize: 20.0,
-                            fontFamily: 'Cairo'),
-                      ),
-                    ],
+                
+                SizedBox(
+                  height: 10.0,
+                  width: 200.0,
+                  child: Divider(
+                    color: Colors.white60,
                   ),
                 ),
-                Container(
+                Card(
                   color: Colors.white,
                   margin:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.email,
-                        color: Colors.grey.shade800,
-                        size: 30.0,
-                      ),
-                      SizedBox(width: 10.0),
-                      Text(
-                        'pkumar.link@gamil.com',
-                        style: TextStyle(
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.phone,
+                      color: Colors.grey.shade800,
+                      size: 30.0,
+                    ),
+                    title: TextFormField(
+                      style: TextStyle(
                           color: Colors.grey.shade900,
                           fontSize: 20.0,
                           fontFamily: 'Cairo',
                         ),
+                      decoration: InputDecoration(
+                        hintText: '+91 Mobile number',
+                        border: InputBorder.none,
                       ),
-                    ],
+                    ),
+                  ),
+                ),
+                Card(
+                  color: Colors.white,
+                  margin:
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.email,
+                      color: Colors.grey.shade800,
+                      size: 35.0,
+                    ),
+                    title: TextFormField(
+                      style: TextStyle(
+                        color: Colors.grey.shade900,
+                        fontSize: 20.0,
+                        fontFamily: 'Cairo',
+                      ),
+                      decoration: InputDecoration(
+                        hintText: 'something@gamil.com',
+                        border: InputBorder.none,
+                      ),
+                    ),
                   ),
                 ),
               ],
