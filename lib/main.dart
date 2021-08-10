@@ -30,19 +30,34 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         backgroundColor: Colors.indigo[200],
         body: SafeArea(
-          child: Container(
-            height: 100,
-            width: 100,
-            // margin: EdgeInsets.all(8.0),
-            // margin: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
-            margin: EdgeInsets.fromLTRB(60, 20, 30, 50), //(left, top, right, bottom)
-            padding: EdgeInsets.all(20.0),
-            color: Colors.indigo[100],
-            child: Text("TCS"),
+          child: Row(  //Column
+            // mainAxisSize: MainAxisSize.min,
+            // verticalDirection: VerticalDirection.up,
+            // verticalDirection: VerticalDirection.down,
+            // mainAxisAlignment: MainAxisAlignment.start, // center, end, spaceAround, spaceBetween, spaceEvenly
+            crossAxisAlignment: CrossAxisAlignment.stretch, // end, center, stretch, start
+            children: [
+              Container(
+                // height: 100,
+                width: 100,
+                color: Colors.indigo[100],
+                child: Text("TCS"),
+              ),
+              SizedBox(height:10), // Space between two widgets
+              Container(
+                // height: 100,
+                // width: double.infinity,
+                color: Colors.indigo[400],
+                child: Text("TCS"),
+              ),
+              Container(
+                // height: 100,
+                width: 100,
+                color: Colors.indigo[500],
+                child: Text("TCS"),
+              ),
 
-            // transform: Matrix4.rotationX(1.0),
-            // transform: Matrix4.rotationY(1.0),
-            transform: Matrix4.rotationZ(0.5),
+            ],
           ),
         ),
       ),
