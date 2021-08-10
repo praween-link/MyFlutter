@@ -1,11 +1,10 @@
 //////////////////////////////////
-/// Icons : https://icons8.com/ 
+/// Icons : https://icons8.com/
 ///
 /// Design Images : https://www.canva.com/design/DAEKpZ6GAO8/LnuM1P5tikAocuurR8BCIg/edit
 ///
 ///
 //////////////////////////////////
-
 
 import 'package:flutter/material.dart';
 
@@ -28,35 +27,36 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        backgroundColor: Colors.indigo[200],
+        backgroundColor: Colors.teal,
         body: SafeArea(
-          child: Row(  //Column
-            // mainAxisSize: MainAxisSize.min,
-            // verticalDirection: VerticalDirection.up,
-            // verticalDirection: VerticalDirection.down,
-            // mainAxisAlignment: MainAxisAlignment.start, // center, end, spaceAround, spaceBetween, spaceEvenly
-            crossAxisAlignment: CrossAxisAlignment.stretch, // end, center, stretch, start
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                // height: 100,
                 width: 100,
-                color: Colors.indigo[100],
-                child: Text("TCS"),
+                height: double.infinity,
+                color: Colors.red,
               ),
-              SizedBox(height:10), // Space between two widgets
-              Container(
-                // height: 100,
-                // width: double.infinity,
-                color: Colors.indigo[400],
-                child: Text("TCS"),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.yellow,
+                  ),
+                  Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.green,
+                  ),
+                ],
               ),
               Container(
-                // height: 100,
                 width: 100,
-                color: Colors.indigo[500],
-                child: Text("TCS"),
+                height: double.infinity,
+                color: Colors.blue,
               ),
-
             ],
           ),
         ),
