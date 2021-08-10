@@ -54,45 +54,44 @@ class _MyAppState extends State<MyApp> {
                       fontFamily: 'Cairo',
                       letterSpacing: 5.0),
                 ),
-                Container(
+                
+                SizedBox(
+                  height: 20.0,
+                  width: 200.0,
+                  child: Divider(
+                    color: Colors.grey.shade500,
+                  )
+                ),
+                Card(
                   color: Colors.white,
                   margin:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.phone,
-                        color: Colors.grey.shade800,
-                        size: 30.0,
-                      ),
-                      SizedBox(width: 10.0),
-                      Text(
-                        '+91 850 776 6280',
-                        style: TextStyle(
-                            color: Colors.grey.shade900,
-                            fontSize: 20.0,
-                            fontFamily: 'Cairo'),
-                      ),
-                    ],
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.phone,
+                      color: Colors.grey.shade800,
+                      size: 30.0,
+                    ),
+                    title: Text(
+                      '+91 850 776 6280',
+                      style: TextStyle(
+                          color: Colors.grey.shade900,
+                          fontSize: 20.0,
+                          fontFamily: 'Cairo'),
+                    ),
                   ),
                 ),
-                Container(
-                  color: Colors.white,
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
+                Card(
+                    color: Colors.white,
+                    margin:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    child: ListTile(
+                      leading: Icon(
                         Icons.email,
                         color: Colors.grey.shade800,
                         size: 30.0,
                       ),
-                      SizedBox(width: 10.0),
-                      Text(
+                      title: Text(
                         'pkumar.link@gamil.com',
                         style: TextStyle(
                           color: Colors.grey.shade900,
@@ -100,9 +99,7 @@ class _MyAppState extends State<MyApp> {
                           fontFamily: 'Cairo',
                         ),
                       ),
-                    ],
-                  ),
-                ),
+                    )),
               ],
             ),
           ),
