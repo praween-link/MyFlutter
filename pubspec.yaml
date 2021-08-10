@@ -47,6 +47,15 @@ flutter:
     # - images/diamond.png
     - images/
   #   - images/a_dot_ham.jpeg
+
+  fonts:
+    - family: MonteCarlo
+      fonts:
+        - asset: fonts/MonteCarlo-Regular.ttf
+
+    - family: Cairo
+      fonts:
+        - asset: fonts/Cairo-Regular.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
