@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      // child: Text(nouns.first),
+      // child: Text(all.last), // nouns.first
       child: TextButton(
         onPressed: () => pairWords(),
         child: Text(
