@@ -1,16 +1,24 @@
-//////////////////////////////////
-/// Icons : https://icons8.com/
-///
-/// Design Images : https://www.canva.com/design/DAEKpZ6GAO8/LnuM1P5tikAocuurR8BCIg/edit
-///
-///
-//////////////////////////////////
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:math';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MaterialApp(
+      title: 'Dice',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        backgroundColor: Colors.blueGrey,
+        appBar: AppBar(
+          title: Text("Dice"),
+        ),
+        body: SafeArea(
+          child: MyApp(),
+        ),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -20,98 +28,41 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int leftDiceNumber = Random().nextInt(6) + 1;
+  int rightDiceNumber = Random().nextInt(6) + 1;
+
+  void change_left() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+    });
+  }
+
+  void change_right() {
+    setState(() {
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Scaffold(
-          backgroundColor: Colors.blueGrey,
-          body: SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                CircleAvatar(
-                  radius: 50.0,
-                  backgroundColor: Colors.blueGrey.shade100,
-                  backgroundImage: AssetImage('images/iam.png'),
-                ),
-                Text(
-                  'Praween Kumar',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'MonteCarlo'),
-                ),
-                Text(
-                  'SOFTWEAR DEVELOPER',
-                  style: TextStyle(
-                      color: Colors.white60,
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Cairo',
-                      letterSpacing: 5.0),
-                ),
-                
-                SizedBox(
-                  height: 10.0,
-                  width: 200.0,
-                  child: Divider(
-                    color: Colors.white60,
-                  ),
-                ),
-                Card(
-                  color: Colors.white,
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.phone,
-                      color: Colors.grey.shade800,
-                      size: 30.0,
-                    ),
-                    title: TextFormField(
-                      style: TextStyle(
-                          color: Colors.grey.shade900,
-                          fontSize: 20.0,
-                          fontFamily: 'Cairo',
-                        ),
-                      decoration: InputDecoration(
-                        hintText: '+91 Mobile number',
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-                Card(
-                  color: Colors.white,
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.email,
-                      color: Colors.grey.shade800,
-                      size: 35.0,
-                    ),
-                    title: TextFormField(
-                      style: TextStyle(
-                        color: Colors.grey.shade900,
-                        fontSize: 20.0,
-                        fontFamily: 'Cairo',
-                      ),
-                      decoration: InputDecoration(
-                        hintText: 'something@gamil.com',
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Expanded(
+            child: TextButton(
+              onPressed: () => change_left(),
+              child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
           ),
-        ));
+          Expanded(
+            child: TextButton(
+              child: Image.asset('images/dice$rightDiceNumber.png'),
+              onPressed: () => change_right(),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
