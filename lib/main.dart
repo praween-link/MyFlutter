@@ -11,7 +11,7 @@ void main() {
       home: Scaffold(
         backgroundColor: Colors.blueGrey,
         appBar: AppBar(
-          title: Text("Dice"),
+          title: Text("Ask Me Anithing"),
         ),
         body: SafeArea(
           child: MyApp(),
@@ -28,40 +28,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int leftDiceNumber = Random().nextInt(6) + 1;
-  int rightDiceNumber = Random().nextInt(6) + 1;
-
-  void change_left() {
+  int num = 1;
+  void nextCallenge() {
     setState(() {
-      leftDiceNumber = Random().nextInt(6) + 1;
-    });
-  }
-
-  void change_right() {
-    setState(() {
-      rightDiceNumber = Random().nextInt(6) + 1;
+      num = Random().nextInt(5) + 1;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Expanded(
-            child: TextButton(
-              onPressed: () => change_left(),
-              child: Image.asset('images/dice$leftDiceNumber.png'),
-            ),
-          ),
-          Expanded(
-            child: TextButton(
-              child: Image.asset('images/dice$rightDiceNumber.png'),
-              onPressed: () => change_right(),
-            ),
-          ),
-        ],
+      child: TextButton(
+        onPressed: () => nextCallenge(),
+        child: Image.asset('images/ball$num.png'),
       ),
     );
   }
