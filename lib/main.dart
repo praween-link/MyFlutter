@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:english_words/english_words.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      title: 'Dice',
+      title: 'Word',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         backgroundColor: Colors.blueGrey,
         appBar: AppBar(
-          title: Text("Ask Me Anithing"),
+          title: Text("Generate Pair Words"),
         ),
         body: SafeArea(
           child: MyApp(),
@@ -28,19 +29,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int num = 1;
-  void nextCallenge() {
+  var wordPair = new WordPair.random();
+
+  void pairWords() {
     setState(() {
-      num = Random().nextInt(5) + 1;
+      wordPair = new WordPair.random();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
+      // child: Text(nouns.first),
       child: TextButton(
-        onPressed: () => nextCallenge(),
-        child: Image.asset('images/ball$num.png'),
+        onPressed: () => pairWords(),
+        child: Text(
+          wordPair.asPascalCase,
+          style: TextStyle(
+            fontSize: 30.0,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
