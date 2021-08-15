@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:testing_app/quizalert.dart';
 import 'quizBrain.dart';
 
 void main() {
@@ -10,8 +12,16 @@ void main() {
       ),
       home: Scaffold(
         backgroundColor: Colors.blueGrey.shade900,
-        body: SafeArea(
-          child: MyApp(),
+        body: Container(
+          child: SafeArea(
+            child: MyApp(),
+          ),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/background.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
       ),
     ),
@@ -19,6 +29,7 @@ void main() {
 }
 
 QuizBrain quizbrain = QuizBrain();
+QuizAlert quizalert = QuizAlert();
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
@@ -27,19 +38,33 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Icon> scoreKeeper = [];
-
+  
   void currectAnswer() {
-    scoreKeeper.add(Icon(
+    quizbrain.scoreKeeper.add(Icon(
       Icons.check,
       color: Colors.green,
     ));
   }
-  void wrongAnswer(){
-    scoreKeeper.add(Icon(
+  void wrongAnswer() {
+    quizbrain.scoreKeeper.add(Icon(
       Icons.close,
       color: Colors.red,
     ));
+  }
+  void checkAnswer(bool userPickAns) {
+    setState(() {
+      if(quizbrain.answerMark){
+        if(userPickAns == quizbrain.getAnswer()) {
+          currectAnswer();
+        }else{
+          wrongAnswer();
+        }
+        quizbrain.nextQuestion();
+        print(quizbrain.answerMark);
+      }else{
+        quizalert.quizAlert(context);
+      }
+    });
   }
 
   @override
@@ -78,11 +103,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               onPressed: () {
-                setState(() {
-                  bool user_answer = quizbrain.getAnswer();
-                  if(quizbrain.answerMark) {user_answer ? currectAnswer() : wrongAnswer();}
-                  quizbrain.nextQuestion();
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -101,11 +122,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               onPressed: () {
-                setState(() {
-                  bool user_answer = quizbrain.getAnswer();
-                  if(quizbrain.answerMark) {user_answer ? wrongAnswer() : currectAnswer();}
-                  quizbrain.nextQuestion();
-                });
+                checkAnswer(false);
               },
             ),
           ),
@@ -115,7 +132,7 @@ class _MyAppState extends State<MyApp> {
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: scoreKeeper,
+              children: quizbrain.scoreKeeper,
             ),
           ),
         ),

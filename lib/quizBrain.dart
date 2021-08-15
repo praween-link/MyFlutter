@@ -1,23 +1,28 @@
+import 'package:flutter/material.dart';
+
 import 'questionAnswer.dart';
 
 class QuizBrain {
   List<Questions> _questionBank = [
-    Questions(q: 'Codding is good for developers.', a: true),
-    Questions(q: 'Developers develop new things.', a: true),
-    Questions(q: 'Create mobile application using only java programming language.', a: false),
-    Questions(q: 'We can store string type data in \'int str\'.', a: false),
-    Questions(q: 'Codding is good for developers.', a: true),
-    Questions(q: 'Developers develop new things.', a: true),
-    Questions(q: 'Create mobile application using only java programming language.', a: false),
-    Questions(q: 'We can store string type data in \'int str\'.', a: false),
+    // Questions(q: 'Codding is good for developers.', a: true),
+    Questions(questionText: 'Codding is good for developers.', answerBool: true),
+    Questions(questionText: 'Developers develop new things.', answerBool: true),
+    Questions(questionText: 'Create mobile application using only java programming language.', answerBool: false),
+    Questions(questionText: 'We can store string type data in \'int str\'.', answerBool: false),
+    Questions(questionText: 'Codding is good for developers.', answerBool: true),
+    Questions(questionText: 'Developers develop new things.', answerBool: true),
+    Questions(questionText: 'Create mobile application using only java programming language.', answerBool: false),
+    Questions(questionText: 'We can store string type data in \'int str\'.', answerBool: false),
   ];
 
   int _questionNumber = 0;
   bool answerMark = true;
+  List<Icon> scoreKeeper = [];
 
   int nextQuestion() {
     if(_questionNumber < _questionBank.length - 1) _questionNumber ++;
     else answerMark = false;
+    print("QN - $_questionNumber");
     return _questionNumber;
   }
 
