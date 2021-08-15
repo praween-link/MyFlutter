@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testing_app/questionAnswer.dart';
-// import 'package:audioplayers/audioplayers.dart';
+import 'quizBrain.dart';
 
 void main() {
   runApp(
@@ -19,6 +18,8 @@ void main() {
   );
 }
 
+QuizBrain quizbrain = QuizBrain();
+
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
@@ -28,20 +29,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<Icon> scoreKeeper = [];
 
-  // List<String> questions = [
-  //   "Codding is good for developers?",
-  //   'Developers develop new things?',
-  //   'Create mobile application using only java programming language?',
-  // ];
-  // List<bool> answers = [true, true, false];
-
-  List<Questions> questionBank = [
-    Questions(q: 'Codding is good for developers?', a: true),
-    Questions(q: 'Developers develop new things?', a: true),
-    Questions(q: 'Create mobile application using only java programming language?', a: false),
-  ];
-
-  int question_number = 0;
+  void currectAnswer() {
+    scoreKeeper.add(Icon(
+      Icons.check,
+      color: Colors.green,
+    ));
+  }
+  void wrongAnswer(){
+    scoreKeeper.add(Icon(
+      Icons.close,
+      color: Colors.red,
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +54,7 @@ class _MyAppState extends State<MyApp> {
             padding: const EdgeInsets.all(20.0),
             child: Center(
               child: Text(
-                questionBank[question_number].questionText,
+                quizbrain.getQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -80,17 +79,9 @@ class _MyAppState extends State<MyApp> {
               ),
               onPressed: () {
                 setState(() {
-                  bool user_answer = questionBank[question_number].answerBool;
-                  user_answer
-                      ? scoreKeeper.add(Icon(
-                          Icons.check,
-                          color: Colors.green,
-                        ))
-                      : scoreKeeper.add(Icon(
-                          Icons.close,
-                          color: Colors.red,
-                        ));
-                  question_number++;
+                  bool user_answer = quizbrain.getAnswer();
+                  if(quizbrain.answerMark) {user_answer ? currectAnswer() : wrongAnswer();}
+                  quizbrain.nextQuestion();
                 });
               },
             ),
@@ -111,17 +102,9 @@ class _MyAppState extends State<MyApp> {
               ),
               onPressed: () {
                 setState(() {
-                  bool user_answer = questionBank[question_number].answerBool;
-                  !user_answer
-                      ? scoreKeeper.add(Icon(
-                          Icons.check,
-                          color: Colors.green,
-                        ))
-                      : scoreKeeper.add(Icon(
-                          Icons.close,
-                          color: Colors.red,
-                        ));
-                  question_number++;
+                  bool user_answer = quizbrain.getAnswer();
+                  if(quizbrain.answerMark) {user_answer ? wrongAnswer() : currectAnswer();}
+                  quizbrain.nextQuestion();
                 });
               },
             ),
