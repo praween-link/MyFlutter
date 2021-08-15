@@ -21,6 +21,7 @@ void main() {
               image: AssetImage('images/background.png'),
               fit: BoxFit.cover,
             ),
+            
           ),
         ),
       ),
@@ -105,6 +106,9 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {
                 checkAnswer(true);
               },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
             ),
           ),
         ),
@@ -124,6 +128,7 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {
                 checkAnswer(false);
               },
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
             ),
           ),
         ),
