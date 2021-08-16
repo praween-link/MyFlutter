@@ -140,7 +140,7 @@ class _MyAppState extends State<MyApp> {
               children: quizbrain.scoreKeeper,
             ),
           ),
-        ),
+      ),
       ],
     );
   }
