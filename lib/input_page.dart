@@ -14,7 +14,6 @@ enum Gender{
   female,
   unset,
 }
-Gender selected = Gender.unset;
 
 class InputPage extends StatefulWidget {
   @override
@@ -22,6 +21,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Gender selected = Gender.unset;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,38 +36,36 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selected == Gender.male ? selected = Gender.unset : selected = Gender.male;
-                          });
-                        },
-                        child: ReusableCard(
-                          usingColor: selected == Gender.male ? Color(0xFF242852) : activeContainerColor,
-                          childCard: IconContent(
-                            genderIcon: Icons.male,
-                            genderLevel: "MALE",
-                            levelColor: selected == Gender.male ? Color(0xFFFFFFFF) : Color(0xFFc7c7c7),
-                            levelSize: selected == Gender.male ? 20.0 : 16.0,
-                          ),
-                        )),
+                    child: ReusableCard(
+                      onPress: () {
+                        setState(() {
+                          selected == Gender.male ? selected = Gender.unset : selected = Gender.male;
+                        });
+                      },
+                      usingColor: selected == Gender.male ? Color(0xFF242852) : activeContainerColor,
+                      childCard: IconContent(
+                        genderIcon: Icons.male,
+                        genderLevel: "MALE",
+                        levelColor: selected == Gender.male ? Color(0xFFFFFFFF) : Color(0xFFc7c7c7),
+                        levelSize: selected == Gender.male ? 20.0 : 16.0,
+                      ),
+                    ),
                   ),
                   Expanded(
-                      child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selected == Gender.female ? selected = Gender.unset : selected = Gender.female;
-                            });
-                          },
-                          child: ReusableCard(
-                            usingColor: selected == Gender.female ? Color(0xFF242852) : activeContainerColor,
-                            childCard: IconContent(
-                              genderIcon: Icons.female,
-                              genderLevel: "FEMALE",
-                              levelColor: selected == Gender.female ? Color(0xFFFFFFFF) : Color(0xFFc7c7c7),
-                              levelSize: selected == Gender.female ? 20.0 : 16.0,
-                            ),
-                          ))),
+                      child: ReusableCard(
+                        onPress: () {
+                          setState(() {
+                            selected == Gender.female ? selected = Gender.unset : selected = Gender.female;
+                          });
+                        },
+                        usingColor: selected == Gender.female ? Color(0xFF242852) : activeContainerColor,
+                        childCard: IconContent(
+                          genderIcon: Icons.female,
+                          genderLevel: "FEMALE",
+                          levelColor: selected == Gender.female ? Color(0xFFFFFFFF) : Color(0xFFc7c7c7),
+                          levelSize: selected == Gender.female ? 20.0 : 16.0,
+                        ),
+                      )),
                 ],
               ),
             ),
@@ -76,7 +76,45 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: ReusableCard(usingColor: activeContainerColor,),
+                    child: ReusableCard(
+                      usingColor: activeContainerColor,
+                      childCard: Container(
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              "WEIGHT",
+                              style: TextStyle(
+                                color: Color(0xFFFFFFFF),
+                                fontSize: 15.0,
+                              ),
+                            ),
+                            SizedBox(height: 10.0),
+                            Text(
+                              "50",
+                              style: TextStyle(
+                                color: Color(0xFFFFFFFF),
+                                fontSize: 25.0,
+                              ),
+                            ),
+                            SizedBox(height: 10.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                FloatingActionButton(
+                                  onPressed: () {},
+                                  child: Icon(Icons.add),
+                                ),
+                                SizedBox(width: 10.0),
+                                FloatingActionButton(
+                                  onPressed: () {},
+                                  child: Icon(Icons.remove),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: ReusableCard(usingColor: activeContainerColor),
