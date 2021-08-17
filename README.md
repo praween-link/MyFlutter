@@ -1,6 +1,11 @@
-# testing_app
+# BMI Calculator Mobile Application
 
-A new Flutter application.
+## A new Flutter application.
+
+### Screen of Application
+<img src="app_screen_img/1.png.jpg" width="300" height="650" /> <img src="app_screen_img/2.png.jpg" width="300" height="650" /> <img src="app_screen_img/3.png.jpg" width="300" height="650" />
+
+
 
 ## Getting Started
 
