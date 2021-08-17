@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:testing_app/results_page.dart';
 
 import 'constants.dart';
 import 'icon_content.dart';
@@ -243,11 +244,17 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              color: cBottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: cBottomContainerHeight,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsPage(),),);
+              },
+              child: Container(
+                child: Text("CALCULATE", style: TextStyle(color: Colors.white, fontSize: 25.0,),),
+                color: cBottomContainerColor,
+                margin: EdgeInsets.only(top: 10.0),
+                width: double.infinity,
+                height: cBottomContainerHeight,
+              ),
             ),
           ],
         ));
