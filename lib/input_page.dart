@@ -9,54 +9,19 @@ const bottomContainerColor = Color(0xFF5f0066);
 const activeContainerColor = Color(0xFF1e213e);
 const unactiveContainerColor = Color(0xFFf7f7f7);
 
+enum Gender{
+  male,
+  female,
+  unset,
+}
+Gender selected = Gender.unset;
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
-
-  int select = 0;
-  
-  Color selected_color1 = Color(0xFFc7c7c7);
-  Color selected_color2 = Color(0xFFc7c7c7);
-  double selected_size1 = 16.0;
-  double selected_size2 = 16.0;
-
-  void selectGender(bool selected) {
-    setState(() {
-      if(selected) {
-        if(select == 1) {
-          select = 0;
-          selected_color1 = Color(0xFFc7c7c7);
-          selected_size1 = 16.0;
-        }
-        else {
-          select = 1;
-          selected_color1 = Color(0xFFFFFFFF);
-          selected_color2 = Color(0xFFc7c7c7);
-          selected_size1 = 20.0;
-          selected_size2 = 16.0;
-        }
-      }
-
-      else {
-        if(select == 2) {
-          select = 0;
-          selected_color2 = Color(0xFFc7c7c7);
-          selected_size2 = 16.0;
-        }
-        else {
-          select = 2;
-          selected_color2 = Color(0xFFFFFFFF);
-          selected_color1 = Color(0xFFc7c7c7);
-          selected_size2 = 20.0;
-          selected_size1 = 16.0;
-        }
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,27 +35,35 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Expanded(
                     child: GestureDetector(
-                        onTap: () => selectGender(true),
+                        onTap: () {
+                          setState(() {
+                            selected == Gender.male ? selected = Gender.unset : selected = Gender.male;
+                          });
+                        },
                         child: ReusableCard(
-                          usingColor: select == 1 ? Color(0xFF242852) : activeContainerColor,
+                          usingColor: selected == Gender.male ? Color(0xFF242852) : activeContainerColor,
                           childCard: IconContent(
                             genderIcon: Icons.male,
                             genderLevel: "MALE",
-                            levelColor: selected_color1,
-                            levelSize: selected_size1,
+                            levelColor: selected == Gender.male ? Color(0xFFFFFFFF) : Color(0xFFc7c7c7),
+                            levelSize: selected == Gender.male ? 20.0 : 16.0,
                           ),
                         )),
                   ),
                   Expanded(
                       child: GestureDetector(
-                          onTap: () => selectGender(false),
+                          onTap: () {
+                            setState(() {
+                              selected == Gender.female ? selected = Gender.unset : selected = Gender.female;
+                            });
+                          },
                           child: ReusableCard(
-                            usingColor: select == 2 ? Color(0xFF242852) : activeContainerColor,
+                            usingColor: selected == Gender.female ? Color(0xFF242852) : activeContainerColor,
                             childCard: IconContent(
                               genderIcon: Icons.female,
                               genderLevel: "FEMALE",
-                              levelColor: selected_color2,
-                              levelSize: selected_size2,
+                              levelColor: selected == Gender.female ? Color(0xFFFFFFFF) : Color(0xFFc7c7c7),
+                              levelSize: selected == Gender.female ? 20.0 : 16.0,
                             ),
                           ))),
                 ],
@@ -103,7 +76,7 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: ReusableCard(usingColor: activeContainerColor),
+                    child: ReusableCard(usingColor: activeContainerColor,),
                   ),
                   Expanded(
                     child: ReusableCard(usingColor: activeContainerColor),
