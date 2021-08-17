@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:testing_app/results_page.dart';
-
-import 'bottom_button.dart';
-import 'constants.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'round_button_icon.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:testing_app/calculator_brain.dart';
+import 'package:testing_app/components/bottom_button.dart';
+import 'package:testing_app/components/constants.dart';
+import 'package:testing_app/components/icon_content.dart';
+import 'package:testing_app/components/reusable_card.dart';
+import 'package:testing_app/components/round_button_icon.dart';
+import 'package:testing_app/pages/results_page.dart';
 
 enum Gender {
   male,
@@ -248,10 +247,16 @@ class _InputPageState extends State<InputPage> {
             ),
             BottomButton(
               onTap: () {
+                CalculatorBrain calc =
+                    new CalculatorBrain(height: height, weight: weight);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultsPage(),
+                    builder: (context) => ResultsPage(
+                      bmiResult: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      resultInterpetation: calc.getInterpetation(),
+                    ),
                   ),
                 );
               },

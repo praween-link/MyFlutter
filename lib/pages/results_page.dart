@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:testing_app/reusable_card.dart';
+import 'package:testing_app/components/bottom_button.dart';
+import 'package:testing_app/components/constants.dart';
+import 'package:testing_app/components/reusable_card.dart';
 
-import 'bottom_button.dart';
-import 'constants.dart';
+import 'gauge.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage({
+    @required this.bmiResult,
+    @required this.resultText,
+    @required this.resultInterpetation,
+  });
+
+  final double bmiResult;
+  final String resultText;
+  final String resultInterpetation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,8 +28,7 @@ class ResultsPage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(12.0), 
-                
+                padding: const EdgeInsets.all(12.0),
                 child: Text(
                   "Your Result",
                   style: cResultTextStyle,
@@ -32,12 +42,19 @@ class ResultsPage extends StatelessWidget {
                 childCard: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
-
                   children: <Widget>[
-                    Text("Natural", style: cResTextStyle,),
-                    Text("50", style: cResultNumberStyle,),
-                    Text("Hello, this is result of BMI calculation of any persion.", style: cDiscriptionTextStyle, textAlign: TextAlign.center,),
-                  ], 
+                    Text(
+                      resultText.toUpperCase(),
+                      style: cResTextStyle,
+                    ),
+                    ////////////////////
+                    SfRadialGaugeWidget(bmiResult: bmiResult),
+                    Text(
+                      resultInterpetation,
+                      style: cDiscriptionTextStyle,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
             ),
